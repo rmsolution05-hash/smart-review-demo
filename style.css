@@ -1908,3 +1908,37 @@ box-shadow:
 0 0 45px rgba(37,99,235,.20);
 
 }
+#toast{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+background:#111;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:12px;
+
+opacity:0;
+
+transform:translateY(30px);
+
+transition:.3s;
+
+z-index:9999;
+
+}
+
+
+#toast.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
