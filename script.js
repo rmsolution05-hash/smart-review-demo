@@ -1,5 +1,5 @@
 const GOOGLE_REVIEW_URL =
-"https://g.page/r/XXXXXXXXXXXX/review";
+"https://g.page/r/CdT-R2IpVtpnEBM/review";
 
 const WHATSAPP_NUMBER = "917400342769";
 
