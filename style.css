@@ -959,4 +959,50 @@ transform:translateY(0);
 .hidden{
     display:none !important;
 }
+.qr-card{
 
+margin-top:35px;
+
+padding:25px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.15);
+
+backdrop-filter:blur(15px);
+
+}
+
+.qr-card img{
+
+width:180px;
+
+margin:20px auto;
+
+display:block;
+
+border-radius:15px;
+
+background:white;
+
+padding:12px;
+
+}
+
+.qr-card h3{
+
+color:#fff;
+
+margin-bottom:10px;
+
+}
+
+.qr-card p{
+
+color:#dbeafe;
+
+}
