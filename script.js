@@ -1,89 +1,200 @@
+// =========================
+// RM Solution Smart Review
+// Professional Version
+// =========================
+
+// Google Review Link
 const GOOGLE_REVIEW =
 "https://g.page/r/CdT-R2IpVtpnEBM/review";
 
+// Elements
 const stars = document.querySelectorAll(".star");
 
 const hero = document.querySelector(".hero");
+
 const feedback = document.getElementById("feedbackSection");
+
 const review = document.getElementById("reviewSection");
+
 const thankyou = document.getElementById("thankyouSection");
 
-let selectedReview = "";
+const feedbackForm =
+document.getElementById("feedbackForm");
 
-stars.forEach((star) => {
+const copyBtn =
+document.getElementById("copyReviewBtn");
 
-    star.addEventListener("click", () => {
 
-        const rating = Number(star.dataset.rate);
+// =========================
+// Toast
+// =========================
 
-        if (rating === 5) {
+function showToast(message){
 
-            hero.classList.add("hidden");
-            review.classList.remove("hidden");
+const toast=document.createElement("div");
 
-        } else {
+toast.className="toast";
 
-            hero.classList.add("hidden");
-            feedback.classList.remove("hidden");
+toast.innerHTML=message;
 
-        }
+document.body.appendChild(toast);
 
-    });
+setTimeout(()=>{
+
+toast.classList.add("show");
+
+},100);
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+setTimeout(()=>{
+
+toast.remove();
+
+},400);
+
+},2500);
+
+}
+
+
+// =========================
+// Star Click
+// =========================
+
+stars.forEach(star=>{
+
+star.addEventListener("click",()=>{
+
+const rate=Number(star.dataset.rate);
+
+hero.classList.add("hidden");
+
+if(rate<5){
+
+feedback.classList.remove("hidden");
+
+window.scrollTo({
+
+top:feedback.offsetTop,
+
+behavior:"smooth"
 
 });
 
-const options = document.querySelectorAll(
-'input[name="review"]'
+}
+
+else{
+
+review.classList.remove("hidden");
+
+window.scrollTo({
+
+top:review.offsetTop,
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+
+// =========================
+// Feedback Form
+// =========================
+
+feedbackForm.addEventListener("submit",(e)=>{
+
+e.preventDefault();
+
+feedback.classList.add("hidden");
+
+thankyou.classList.remove("hidden");
+
+showToast("✅ Feedback Submitted");
+
+setTimeout(()=>{
+
+window.location.href=GOOGLE_REVIEW;
+
+},2000);
+
+});
+
+
+// =========================
+// Copy Review
+// =========================
+
+copyBtn.addEventListener("click",async()=>{
+
+const selected=document.querySelector(
+
+'input[name="review"]:checked'
+
 );
 
-options.forEach((option)=>{
+if(!selected){
 
-    option.addEventListener("change",()=>{
+showToast("⚠ Please choose one review.");
 
-        selectedReview = option.value;
+return;
 
-    });
+}
+
+try{
+
+await navigator.clipboard.writeText(
+
+selected.value
+
+);
+
+showToast("✅ Review copied!");
+
+setTimeout(()=>{
+
+window.open(
+
+GOOGLE_REVIEW,
+
+"_blank"
+
+);
+
+},900);
+
+}
+
+catch{
+
+showToast("❌ Copy failed.");
+
+}
 
 });
 
-document
-.getElementById("copyReviewBtn")
-.addEventListener("click",()=>{
 
-    if(selectedReview===""){
+// =========================
+// Keyboard Hint
+// =========================
 
-        alert("Please select a review.");
+window.addEventListener("focus",()=>{
 
-        return;
+setTimeout(()=>{
 
-    }
+if(document.querySelector("#reviewSection:not(.hidden)")){
 
-    navigator.clipboard.writeText(selectedReview);
+showToast("📋 Google Review उघडल्यानंतर Ctrl + V करून Post करा.");
 
-    alert("Review Copied ✔\nNow Paste it on Google.");
+}
 
-    review.classList.add("hidden");
-
-    thankyou.classList.remove("hidden");
-
-    setTimeout(()=>{
-
-        window.location.href=GOOGLE_REVIEW;
-
-    },1000);
-
-});
-
-document
-.getElementById("feedbackForm")
-.addEventListener("submit",(e)=>{
-
-    e.preventDefault();
-
-    alert("Thank you for your feedback ❤️");
-
-    feedback.classList.add("hidden");
-
-    thankyou.classList.remove("hidden");
+},800);
 
 });
