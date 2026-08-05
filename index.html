@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Review | RM Solution</title>
 
-    <meta name="description" content="Smart Google Review System">
-    <meta name="theme-color" content="#2563eb">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>RM Solution | Smart Review</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Smart Google Review System">
+<meta name="theme-color" content="#2563eb">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+
 </head>
 
 <body>
 
 <div class="background"></div>
 
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+
 <header>
 
 <div class="logo">
 
 <div class="logo-icon">
+
 <i class="fa-solid fa-star"></i>
+
 </div>
 
 <div>
+
 <h2>Smart Review</h2>
+
 <p>Powered by RM Solution</p>
+
 </div>
 
 </div>
@@ -50,37 +63,30 @@
 
 </div>
 
-<h1>How was your experience?</h1>
+<h1>
+
+How was your experience?
+
+</h1>
 
 <p>
 
 We value your feedback.
-
 Please rate your experience with us.
 
 </p>
 
 <div class="stars">
 
-<button class="star" data-rate="1">
-★
-</button>
+<button class="star" data-rate="1">★</button>
 
-<button class="star" data-rate="2">
-★
-</button>
+<button class="star" data-rate="2">★</button>
 
-<button class="star" data-rate="3">
-★
-</button>
+<button class="star" data-rate="3">★</button>
 
-<button class="star" data-rate="4">
-★
-</button>
+<button class="star" data-rate="4">★</button>
 
-<button class="star" data-rate="5">
-★
-</button>
+<button class="star" data-rate="5">★</button>
 
 </div>
 
@@ -94,56 +100,211 @@ Tap a star to continue
 
 </section>
 
-<section id="feedbackSection" class="feedback hidden">
+<!-- REVIEW SECTION -->
 
-<div class="feedback-card">
+<section id="reviewSection" class="review-section hidden">
+
+<div class="review-card">
+
+<div class="review-top">
+
+<div class="success-icon">
+
+<i class="fa-solid fa-star"></i>
+
+</div>
 
 <h2>
 
-We Appreciate Your Feedback ❤️
+Thank You ⭐⭐⭐⭐⭐
 
 </h2>
 
 <p>
 
-Tell us what went wrong so we can improve.
+Choose a review below and continue.
+
+</p>
+
+</div>
+
+<div class="review-list">
+
+<label class="review-option">
+
+<input type="radio" name="review"
+
+value="Excellent Service ⭐⭐⭐⭐⭐">
+
+<div>
+
+<h4>Excellent Service</h4>
+
+<p>
+
+Professional work and excellent quality.
+
+</p>
+
+</div>
+
+</label>
+
+<label class="review-option">
+
+<input type="radio" name="review"
+
+value="Highly Professional Team ⭐⭐⭐⭐⭐">
+
+<div>
+
+<h4>Highly Professional Team</h4>
+
+<p>
+
+Very professional and supportive.
+
+</p>
+
+</div>
+
+</label>
+
+<label class="review-option">
+
+<input type="radio" name="review"
+
+value="Fast Delivery ⭐⭐⭐⭐⭐">
+
+<div>
+
+<h4>Fast Delivery</h4>
+
+<p>
+
+Delivered everything before deadline.
+
+</p>
+
+</div>
+
+</label>
+
+<label class="review-option">
+
+<input type="radio" name="review"
+
+value="Highly Recommended ⭐⭐⭐⭐⭐">
+
+<div>
+
+<h4>Highly Recommended</h4>
+
+<p>
+
+Amazing experience. Highly recommended.
+
+</p>
+
+</div>
+
+</label>
+
+<label class="review-option">
+
+<input type="radio" name="review"
+
+value="Amazing Customer Support ⭐⭐⭐⭐⭐">
+
+<div>
+
+<h4>Amazing Customer Support</h4>
+
+<p>
+
+Very quick response and helpful support.
+
+</p>
+
+</div>
+
+</label>
+
+</div>
+
+<button id="copyReviewBtn" class="primary-btn">
+
+<i class="fa-solid fa-copy"></i>
+
+Copy Review & Continue
+
+</button>
+
+</div>
+
+</section>
+
+<!-- FEEDBACK -->
+
+<section id="feedbackSection"
+
+class="feedback hidden">
+
+<div class="feedback-card">
+
+<div class="feedback-icon">
+
+<i class="fa-solid fa-heart"></i>
+
+</div>
+
+<h2>
+
+Help Us Improve ❤️
+
+</h2>
+
+<p>
+
+Tell us what went wrong.
 
 </p>
 
 <form id="feedbackForm">
 
-<div class="group">
-
 <input
+
 type="text"
+
 id="name"
+
 placeholder="Your Name"
+
 required>
 
-</div>
-
-<div class="group">
-
 <input
+
 type="tel"
+
 id="phone"
+
 placeholder="Mobile Number">
 
-</div>
-
-<div class="group">
-
 <textarea
-id="message"
-rows="5"
-placeholder="Write your feedback..."
-required></textarea>
 
-</div>
+id="message"
+
+placeholder="Write your feedback..."
+
+required>
+
+</textarea>
 
 <button
+
 type="submit"
-class="submit-btn">
+
+class="primary-btn">
 
 Submit Feedback
 
@@ -155,77 +316,41 @@ Submit Feedback
 
 </section>
 
-<section id="thankyouSection" class="thankyou hidden">
+<!-- THANK YOU -->
+
+<section
+
+id="thankyouSection"
+
+class="thankyou hidden">
 
 <div class="thankyou-card">
 
-<div class="success">
-
 <i class="fa-solid fa-circle-check"></i>
-
-</div>
 
 <h2>
 
-Thank You!
+Thank You
 
 </h2>
 
 <p>
 
-Redirecting you to Google Review...
+Opening Google Review...
 
 </p>
 
 </div>
 
 </section>
-    <section id="reviewSection" class="review-section hidden">
 
-    <div class="review-card">
+<!-- TOAST -->
 
-        <h2>⭐⭐⭐⭐⭐</h2>
+<div id="toast" class="toast">
 
-        <h3>Choose Your Review</h3>
+Review Copied Successfully ✔
 
-        <p>Select one review and continue to Google.</p>
-
-        <div class="review-list">
-
-            <label class="review-option">
-                <input type="radio" name="review" value="Excellent Service ⭐⭐⭐⭐⭐">
-                <span>Excellent Service ⭐⭐⭐⭐⭐</span>
-            </label>
-
-            <label class="review-option">
-                <input type="radio" name="review" value="Highly Professional Team ⭐⭐⭐⭐⭐">
-                <span>Highly Professional Team ⭐⭐⭐⭐⭐</span>
-            </label>
-
-            <label class="review-option">
-                <input type="radio" name="review" value="Fast Delivery ⭐⭐⭐⭐⭐">
-                <span>Fast Delivery ⭐⭐⭐⭐⭐</span>
-            </label>
-
-            <label class="review-option">
-                <input type="radio" name="review" value="Highly Recommended ⭐⭐⭐⭐⭐">
-                <span>Highly Recommended ⭐⭐⭐⭐⭐</span>
-            </label>
-
-            <label class="review-option">
-                <input type="radio" name="review" value="Amazing Customer Support ⭐⭐⭐⭐⭐">
-                <span>Amazing Customer Support ⭐⭐⭐⭐⭐</span>
-            </label>
-
-        </div>
-
-        <button id="copyReviewBtn" class="submit-btn">
-            📋 Copy & Continue
-        </button>
-
-    </div>
-
-</section>
+</div>
 
 <footer>
 
@@ -240,4 +365,5 @@ Redirecting you to Google Review...
 <script src="script.js"></script>
 
 </body>
+
 </html>
