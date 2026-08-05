@@ -1,223 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Review | RM Solution</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Google Review System">
+    <meta name="theme-color" content="#2563eb">
 
-<title>RM Solution | Smart Review</title>
+    <link rel="stylesheet" href="style.css">
 
-<meta name="description"
-content="Enterprise Smart Review Platform">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta name="theme-color"
-content="#2563eb">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-<link rel="stylesheet"
-href="style.css">
-
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
 
-<!-- =========================
-PREMIUM LOADER
-========================= -->
-
-<div id="loader">
-
-<div class="loader-logo">
-
-<div class="loader-circle">
-
-<i class="fa-solid fa-star"></i>
-
-</div>
-
-<h1>RM Solution</h1>
-
-<p>Smart Review Platform</p>
-
-<div class="loading-bar">
-
-<span></span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================
-AURORA BACKGROUND
-========================= -->
-
-<div class="aurora">
-
-<span class="a1"></span>
-
-<span class="a2"></span>
-
-<span class="a3"></span>
-
-</div>
-
-<!-- =========================
-ORBIT BACKGROUND
-========================= -->
-
-<div class="orbit">
-
-<div class="ring ring1">
-
-<div class="dot"></div>
-
-</div>
-
-<div class="ring ring2">
-
-<div class="dot"></div>
-
-</div>
-
-<div class="ring ring3">
-
-<div class="dot"></div>
-
-</div>
-
-</div>
-
-<!-- =========================
-HEADER
-========================= -->
+<div class="background"></div>
 
 <header>
 
-<div class="container">
-
 <div class="logo">
 
-<div class="logo-box">
-
+<div class="logo-icon">
 <i class="fa-solid fa-star"></i>
-
 </div>
 
 <div>
-
-<h2>RM Solution</h2>
-
-<span>Smart Review Platform</span>
-
+<h2>Smart Review</h2>
+<p>Powered by RM Solution</p>
 </div>
-
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-
-<a href="#">Features</a>
-
-<a href="#">Contact</a>
-
-</nav>
 
 </div>
 
 </header>
 
-<!-- =========================
-HERO
-========================= -->
-
 <section class="hero">
 
-<div class="hero-card">
+<div class="card">
 
-<div class="google-icon">
+<div class="google">
 
 <i class="fa-brands fa-google"></i>
 
 </div>
 
-<span class="badge">
-
-Trusted by Businesses
-
-</span>
-
-<h1>
-
-Share Your Experience
-
-</h1>
+<h1>How was your experience?</h1>
 
 <p>
 
-Your feedback helps us improve.
+We value your feedback.
 
-Please rate your experience below.
+Please rate your experience with us.
 
 </p>
 
 <div class="stars">
 
-<button class="star"
-data-rate="1">
-
+<button class="star" data-rate="1">
 ★
-
 </button>
 
-<button class="star"
-data-rate="2">
-
+<button class="star" data-rate="2">
 ★
-
 </button>
 
-<button class="star"
-data-rate="3">
-
+<button class="star" data-rate="3">
 ★
-
 </button>
 
-<button class="star"
-data-rate="4">
-
+<button class="star" data-rate="4">
 ★
-
 </button>
 
-<button class="star"
-data-rate="5">
-
+<button class="star" data-rate="5">
 ★
-
 </button>
 
 </div>
 
-<p class="hero-note">
+<p class="hint">
 
-Tap any star to continue
+Tap a star to continue
 
 </p>
 
@@ -225,423 +94,100 @@ Tap any star to continue
 
 </section>
 
-<!-- ===========
-PART 2 STARTS HERE
-AI REVIEW SECTION
-=========== -->
-  <!-- =========================
-AI REVIEW SECTION
-========================= -->
+<section id="feedbackSection" class="feedback hidden">
 
-<section id="reviewSection" class="review-section hidden">
+<div class="feedback-card">
 
-<div class="review-card">
+<h2>
 
-<div class="review-header">
+We Appreciate Your Feedback ❤️
 
-<div class="review-icon">
-
-<i class="fa-solid fa-wand-magic-sparkles"></i>
-
-</div>
-
-<h2>AI Review Suggestions</h2>
+</h2>
 
 <p>
-Choose one review below and continue to Google Reviews.
+
+Tell us what went wrong so we can improve.
+
 </p>
 
-</div>
+<form id="feedbackForm">
 
-<div class="review-list">
-
-<label class="review-option">
+<div class="group">
 
 <input
-type="radio"
-name="review"
-value="Excellent service. Highly recommended! ⭐⭐⭐⭐⭐">
-
-<div>
-
-<h4>🏆 Excellent Service</h4>
-
-<p>Professional work and outstanding quality.</p>
+type="text"
+id="name"
+placeholder="Your Name"
+required>
 
 </div>
 
-</label>
-
-<label class="review-option">
+<div class="group">
 
 <input
-type="radio"
-name="review"
-value="Amazing customer support and fast delivery. ⭐⭐⭐⭐⭐">
-
-<div>
-
-<h4>⚡ Fast Delivery</h4>
-
-<p>Delivered before deadline with excellent support.</p>
+type="tel"
+id="phone"
+placeholder="Mobile Number">
 
 </div>
 
-</label>
+<div class="group">
 
-<label class="review-option">
-
-<input
-type="radio"
-name="review"
-value="Very professional team. Great experience. ⭐⭐⭐⭐⭐">
-
-<div>
-
-<h4>💼 Professional Team</h4>
-
-<p>Helpful experts with quick communication.</p>
+<textarea
+id="message"
+rows="5"
+placeholder="Write your feedback..."
+required></textarea>
 
 </div>
 
-</label>
+<button
+type="submit"
+class="submit-btn">
 
-<label class="review-option">
-
-<input
-type="radio"
-name="review"
-value="Excellent quality at affordable pricing. ⭐⭐⭐⭐⭐">
-
-<div>
-
-<h4>💎 Premium Quality</h4>
-
-<p>Value for money and impressive service.</p>
-
-</div>
-
-</label>
-
-<label class="review-option">
-
-<input
-type="radio"
-name="review"
-value="Highly recommended. Will definitely work again. ⭐⭐⭐⭐⭐">
-
-<div>
-  <form id="feedbackForm">
-
-<textarea id="feedbackMessage"></textarea>
-
-<button type="submit">
 Submit Feedback
+
 </button>
 
 </form>
-  <div id="successScreen">
 
+</div>
+
+</section>
+
+<section id="thankyouSection" class="thankyou hidden">
+
+<div class="thankyou-card">
+
+<div class="success">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
 
 <h2>
-🎉 Thank You!
-</h2>
 
+Thank You!
 
-<p>
-Your feedback has been submitted.
-</p>
-
-
-<h3 id="countdown">
-Redirecting...
-</h3>
-
-
-</div>
-
-<h4>❤️ Highly Recommended</h4>
-
-<p>Very satisfied with the overall experience.</p>
-
-</div>
-
-</label>
-
-</div>
-
-<div class="review-actions">
-
-<button id="generateReviewBtn" class="secondary-btn">
-
-<i class="fa-solid fa-rotate"></i>
-
-Generate New Suggestion
-
-</button>
-
-<button id="copyReviewBtn" class="primary-btn">
-
-<i class="fa-solid fa-copy"></i>
-
-Copy & Continue
-
-</button>
-
-</div>
-
-</div>
-
-<!-- QR CARD -->
-
-<div class="qr-card">
-
-<h3>
-
-<i class="fa-solid fa-qrcode"></i>
-
-Scan QR Code
-
-</h3>
-
-<img
-id="reviewQR"
-src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://g.page/r/CdT-R2IpVtpnEBM/review"
-alt="Google Review QR">
-
-<p>
-
-Scan to open Google Review directly.
-
-</p>
-
-<a
-href="https://g.page/r/CdT-R2IpVtpnEBM/review"
-target="_blank"
-class="qr-link">
-
-Open Review Link
-
-</a>
-
-</div>
-
-</section>
-
-<!-- =========================
-PART 3 STARTS HERE
-FEEDBACK SECTION
-========================= -->
-  <!-- =========================
-FEEDBACK SECTION
-========================= -->
-
-<section id="feedbackSection" class="feedback-section hidden">
-
-    <div class="feedback-card">
-
-        <div class="feedback-icon">
-            <i class="fa-solid fa-heart-circle-check"></i>
-        </div>
-
-        <h2>Help Us Improve ❤️</h2>
-
-        <p>
-            We value every feedback. Please tell us what went wrong.
-        </p>
-
-        <form id="feedbackForm">
-
-            <div class="input-group">
-
-                <label>Your Name</label>
-
-                <input
-                type="text"
-                id="name"
-                placeholder="Enter your name"
-                required>
-
-            </div>
-
-            <div class="input-group">
-
-                <label>Mobile Number</label>
-
-                <input
-                type="tel"
-                id="phone"
-                placeholder="+91 9876543210">
-
-            </div>
-
-            <div class="input-group">
-
-                <label>Your Feedback</label>
-
-                <textarea
-                id="message"
-                rows="6"
-                placeholder="Tell us how we can improve..."
-                required></textarea>
-
-            </div>
-
-            <button
-            type="submit"
-            class="primary-btn">
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-                Submit Feedback
-
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-<!-- =========================
-SUCCESS SECTION
-========================= -->
-
-<section
-id="successSection"
-class="success-section hidden">
-
-    <div class="success-card">
-
-        <div class="success-check">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-        </div>
-
-        <h2>
-
-            Review Copied Successfully
-
-        </h2>
-
-        <p>
-
-            Opening Google Review...
-
-        </p>
-
-        <div class="countdown">
-
-            <span id="countValue">3</span>
-
-        </div>
-
-        <div class="progress">
-
-            <div id="progressBar"></div>
-
-        </div>
-
-        <small>
-
-            Paste your review using
-            <strong>Ctrl + V</strong>
-            and click <strong>Post</strong>.
-
-        </small>
-
-    </div>
-
-</section>
-  <div class="ai-review-box">
-
-<h3>
-🤖 AI Generated Review
-</h3>
-
-
-<p id="aiReviewText">
-Click Generate
-</p>
-
-
-<button id="generateReview">
-Generate New Suggestion
-</button>
-
-
-<button id="copyReview">
-Copy Review
-</button>
-
-
-</div>
-  <div class="counter">
-
-<h2 id="feedbackCount">
-0
 </h2>
 
 <p>
-Happy Feedbacks
+
+Redirecting you to Google Review...
+
 </p>
 
 </div>
 
-<!-- =========================
-TOAST
-========================= -->
-
-<div id="toast" class="toast">
-
-    <i class="fa-solid fa-circle-check"></i>
-
-    <span id="toastText">
-
-        Review copied successfully.
-
-    </span>
-
-</div>
-
-<!-- =========================
-FOOTER
-========================= -->
+</section>
 
 <footer>
 
-    <div class="footer-content">
+<p>
 
-        <div>
+© 2026 RM Solution
 
-            <h3>RM Solution</h3>
-
-            <p>
-
-                Smart Review Platform
-
-            </p>
-
-        </div>
-
-        <div class="footer-links">
-
-            <a href="#">Privacy</a>
-
-            <a href="#">Terms</a>
-
-            <a href="#">Support</a>
-
-        </div>
-
-    </div>
-
-    <p class="copyright">
-
-        © 2026 RM Solution. All Rights Reserved.
-
-    </p>
+</p>
 
 </footer>
 
