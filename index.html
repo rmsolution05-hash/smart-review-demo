@@ -3,9 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RM Solution</title>
+    <title>Smart Review | RM Solution</title>
+
+    <meta name="description" content="Smart Google Review System">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body>
-    <h1>Hello RM Solution 🚀</h1>
+
+<div class="background"></div>
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">
+<i class="fa-solid fa-star"></i>
+</div>
+
+<div>
+<h2>Smart Review</h2>
+<p>Powered by RM Solution</p>
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="card">
+
+<div class="google">
+
+<i class="fa-brands fa-google"></i>
+
+</div>
+
+<h1>How was your experience?</h1>
+
+<p>
+
+We value your feedback.
+
+Please rate your experience with us.
+
+</p>
+
+<div class="stars">
+
+<button class="star" data-rate="1">
+★
+</button>
+
+<button class="star" data-rate="2">
+★
+</button>
+
+<button class="star" data-rate="3">
+★
+</button>
+
+<button class="star" data-rate="4">
+★
+</button>
+
+<button class="star" data-rate="5">
+★
+</button>
+
+</div>
+
+<p class="hint">
+
+Tap a star to continue
+
+</p>
+
+</div>
+
+</section>
+
+<section id="feedbackSection" class="feedback hidden">
+
+<div class="feedback-card">
+
+<h2>
+
+We Appreciate Your Feedback ❤️
+
+</h2>
+
+<p>
+
+Tell us what went wrong so we can improve.
+
+</p>
+
+<form id="feedbackForm">
+
+<div class="group">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+required>
+
+</div>
+
+<div class="group">
+
+<input
+type="tel"
+id="phone"
+placeholder="Mobile Number">
+
+</div>
+
+<div class="group">
+
+<textarea
+id="message"
+rows="5"
+placeholder="Write your feedback..."
+required></textarea>
+
+</div>
+
+<button
+type="submit"
+class="submit-btn">
+
+Submit Feedback
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section id="thankyouSection" class="thankyou hidden">
+
+<div class="thankyou-card">
+
+<div class="success">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<h2>
+
+Thank You!
+
+</h2>
+
+<p>
+
+Redirecting you to Google Review...
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 RM Solution
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
