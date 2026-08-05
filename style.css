@@ -1166,3 +1166,139 @@ width:140px;
 }
 
 }
+/* =========================
+   Animated Orbit Background
+========================= */
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#07182f,#0b2d63,#0f5fb8);
+    position:relative;
+}
+
+/* Background Glow */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:900px;
+    height:900px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+    rgba(59,130,246,.45),
+    transparent 70%);
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    filter:blur(80px);
+    animation:pulse 8s ease-in-out infinite;
+    z-index:-3;
+}
+
+/* Orbit Ring 1 */
+
+body::after{
+    content:"";
+    position:fixed;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.08);
+    animation:rotate 18s linear infinite;
+    z-index:-2;
+}
+
+/* Orbit Ring 2 */
+
+.background{
+    position:fixed;
+    width:480px;
+    height:480px;
+    border-radius:50%;
+    border:2px dashed rgba(255,255,255,.12);
+    animation:rotateReverse 14s linear infinite;
+    z-index:-1;
+}
+
+/* Floating Balls */
+
+.background::before,
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#60a5fa;
+
+    box-shadow:0 0 20px #60a5fa;
+
+}
+
+.background::before{
+
+    top:-9px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+.background::after{
+
+    bottom:-9px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+@keyframes rotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes rotateReverse{
+
+    from{
+        transform:rotate(360deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    50%{
+        transform:translate(-50%,-50%) scale(1.15);
+    }
+
+}
