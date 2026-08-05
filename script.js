@@ -1,201 +1,279 @@
-// =========================
-// RM Solution Smart Review
-// Professional Version
-// =========================
+/* ==========================================
+   PART 3 : FEEDBACK SUBMIT + SUCCESS FLOW
+========================================== */
+
 
 // Google Review Link
-const GOOGLE_REVIEW =
-"https://g.page/r/CdT-R2IpVtpnEBM/review";
+const googleReviewURL = "YOUR_GOOGLE_REVIEW_LINK_HERE";
+
+
+// WhatsApp Hook
+const whatsappNumber = "919999999999";
+
+
+// Email Hook
+const businessEmail = "hello@example.com";
+
 
 // Elements
-const stars = document.querySelectorAll(".star");
 
-const hero = document.querySelector(".hero");
+const feedbackForm = document.querySelector("#feedbackForm");
 
-const feedback = document.getElementById("feedbackSection");
+const successScreen = document.querySelector("#successScreen");
 
-const review = document.getElementById("reviewSection");
-
-const thankyou = document.getElementById("thankyouSection");
-
-const feedbackForm =
-document.getElementById("feedbackForm");
-
-const copyBtn =
-document.getElementById("copyReviewBtn");
+const countdownText = document.querySelector("#countdown");
 
 
-// =========================
-// Toast
-// =========================
 
-function showToast(message){
+// Submit Feedback
 
-const toast=document.createElement("div");
-
-toast.className="toast";
-
-toast.innerHTML=message;
-
-document.body.appendChild(toast);
-
-setTimeout(()=>{
-
-toast.classList.add("show");
-
-},100);
-
-setTimeout(()=>{
-
-toast.classList.remove("show");
-
-setTimeout(()=>{
-
-toast.remove();
-
-},400);
-
-},2500);
-
-}
-
-
-// =========================
-// Star Click
-// =========================
-
-stars.forEach(star=>{
-
-star.addEventListener("click",()=>{
-
-const rate=Number(star.dataset.rate);
-
-hero.classList.add("hidden");
-
-if(rate<5){
-
-feedback.classList.remove("hidden");
-
-window.scrollTo({
-
-top:feedback.offsetTop,
-
-behavior:"smooth"
-
-});
-
-}
-
-else{
-
-review.classList.remove("hidden");
-
-window.scrollTo({
-
-top:review.offsetTop,
-
-behavior:"smooth"
-
-});
-
-}
-
-});
-
-});
-
-
-// =========================
-// Feedback Form
-// =========================
+if(feedbackForm){
 
 feedbackForm.addEventListener("submit",(e)=>{
 
 e.preventDefault();
 
-feedback.classList.add("hidden");
 
-thankyou.classList.remove("hidden");
 
-showToast("✅ Feedback Submitted");
+let feedbackMessage = document.querySelector("#feedbackMessage").value;
 
-setTimeout(()=>{
+let selectedRating = localStorage.getItem("rating");
 
-window.location.href=GOOGLE_REVIEW;
 
-},2000);
+
+// Save Feedback
+
+const feedbackData = {
+
+rating:selectedRating,
+
+message:feedbackMessage,
+
+date:new Date().toLocaleString()
+
+};
+
+
+
+console.log("Feedback Saved:",feedbackData);
+
+
+
+// Store Local
+
+localStorage.setItem(
+"customerFeedback",
+JSON.stringify(feedbackData)
+);
+
+
+
+// Show Success
+
+showSuccessScreen();
+
+
+// Notification Hooks
+
+sendWhatsAppNotification(feedbackData);
+
+sendEmailNotification(feedbackData);
+
 
 });
 
 
-// =========================
-// Copy Review
-// =========================
+}
 
-copyBtn.addEventListener("click",async()=>{
 
-const selected=document.querySelector(
 
-'input[name="review"]:checked'
 
-);
+/* ==========================================
+      SUCCESS SCREEN
+========================================== */
 
-if(!selected){
 
-showToast("⚠ Please choose one review.");
+function showSuccessScreen(){
 
-return;
+
+if(successScreen){
+
+successScreen.style.display="flex";
 
 }
 
-try{
 
-await navigator.clipboard.writeText(
+// Start Countdown
 
-selected.value
+startCountdown();
 
-);
 
-showToast("✅ Review copied!");
+}
 
-setTimeout(()=>{
+
+
+
+/* ==========================================
+      3 SECOND COUNTDOWN
+========================================== */
+
+
+function startCountdown(){
+
+
+let count = 3;
+
+
+let timer = setInterval(()=>{
+
+
+if(countdownText){
+
+countdownText.innerHTML = 
+`Redirecting in ${count} seconds...`;
+
+}
+
+
+
+count--;
+
+
+
+if(count < 0){
+
+
+clearInterval(timer);
+
+
+// Open Google Review
+
+openGoogleReview();
+
+
+}
+
+
+},1000);
+
+
+
+}
+
+
+
+
+/* ==========================================
+      GOOGLE REVIEW REDIRECT
+========================================== */
+
+
+function openGoogleReview(){
+
 
 window.open(
-
-GOOGLE_REVIEW,
-
+googleReviewURL,
 "_blank"
-
 );
 
-},900);
 
 }
 
-catch{
 
-showToast("❌ Copy failed.");
+
+
+/* ==========================================
+      WHATSAPP READY HOOK
+========================================== */
+
+
+function sendWhatsAppNotification(data){
+
+
+let message = `
+
+New Customer Feedback
+
+⭐ Rating:
+${data.rating}
+
+Message:
+${data.message}
+
+Date:
+${data.date}
+
+`;
+
+
+
+let whatsappURL =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+
+
+console.log(
+"WhatsApp Ready:",
+whatsappURL
+);
+
+
+// Enable Later
+
+// window.open(whatsappURL,"_blank");
+
 
 }
 
-});
 
 
-// =========================
-// Keyboard Hint
-// =========================
 
-window.addEventListener("focus",()=>{
+/* ==========================================
+      EMAIL READY HOOK
+========================================== */
 
-setTimeout(()=>{
 
-if(document.querySelector("#reviewSection:not(.hidden)")){
+function sendEmailNotification(data){
 
-showToast("📋 Google Review उघडल्यानंतर Ctrl + V करून Post करा.");
+
+let subject =
+"New Customer Feedback";
+
+
+let body = `
+
+Rating:
+${data.rating}
+
+
+Feedback:
+
+${data.message}
+
+
+Date:
+
+${data.date}
+
+`;
+
+
+
+let mailURL =
+`mailto:${businessEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+
+
+console.log(
+"Email Ready:",
+mailURL
+);
+
+
+
+// Enable Later
+
+// window.location.href = mailURL;
+
 
 }
-
-},800);
-
-});
-window.open(GOOGLE_REVIEW, "_blank");
