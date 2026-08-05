@@ -198,3 +198,4 @@ showToast("📋 Google Review उघडल्यानंतर Ctrl + V कर�
 },800);
 
 });
+window.open(GOOGLE_REVIEW, "_blank");
