@@ -499,3 +499,4 @@ font-size:24px;
 }
 
 }
+window.open(GOOGLE_REVIEW, "_blank");
