@@ -1,62 +1,89 @@
-const GOOGLE_REVIEW_URL =
+const GOOGLE_REVIEW =
 "https://g.page/r/CdT-R2IpVtpnEBM/review";
-
-const WHATSAPP_NUMBER = "917400342769";
 
 const stars = document.querySelectorAll(".star");
 
 const hero = document.querySelector(".hero");
-
 const feedback = document.getElementById("feedbackSection");
-
+const review = document.getElementById("reviewSection");
 const thankyou = document.getElementById("thankyouSection");
 
-stars.forEach(star=>{
+let selectedReview = "";
 
-star.addEventListener("click",()=>{
+stars.forEach((star) => {
 
-let rating=parseInt(star.dataset.rate);
+    star.addEventListener("click", () => {
 
-if(rating===5){
+        const rating = Number(star.dataset.rate);
 
-hero.classList.add("hidden");
+        if (rating === 5) {
 
-thankyou.classList.remove("hidden");
+            hero.classList.add("hidden");
+            review.classList.remove("hidden");
 
-setTimeout(()=>{
+        } else {
 
-window.location.href=GOOGLE_REVIEW_URL;
+            hero.classList.add("hidden");
+            feedback.classList.remove("hidden");
 
-},2000);
+        }
 
-}else{
-
-hero.classList.add("hidden");
-
-feedback.classList.remove("hidden");
-
-}
+    });
 
 });
+
+const options = document.querySelectorAll(
+'input[name="review"]'
+);
+
+options.forEach((option)=>{
+
+    option.addEventListener("change",()=>{
+
+        selectedReview = option.value;
+
+    });
+
+});
+
+document
+.getElementById("copyReviewBtn")
+.addEventListener("click",()=>{
+
+    if(selectedReview===""){
+
+        alert("Please select a review.");
+
+        return;
+
+    }
+
+    navigator.clipboard.writeText(selectedReview);
+
+    alert("Review Copied ✔\nNow Paste it on Google.");
+
+    review.classList.add("hidden");
+
+    thankyou.classList.remove("hidden");
+
+    setTimeout(()=>{
+
+        window.location.href=GOOGLE_REVIEW;
+
+    },1000);
 
 });
 
 document
 .getElementById("feedbackForm")
-.addEventListener("submit",function(e){
+.addEventListener("submit",(e)=>{
 
-e.preventDefault();
+    e.preventDefault();
 
-let name=document.getElementById("name").value;
+    alert("Thank you for your feedback ❤️");
 
-let phone=document.getElementById("phone").value;
+    feedback.classList.add("hidden");
 
-let msg=document.getElementById("message").value;
-
-let text=`Feedback%0A%0AName: ${name}%0APhone: ${phone}%0AFeedback: ${msg}`;
-
-window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank");
-
-alert("Thank You For Your Feedback ❤️");
+    thankyou.classList.remove("hidden");
 
 });
