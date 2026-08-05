@@ -87,3 +87,58 @@ document
     thankyou.classList.remove("hidden");
 
 });
+    .hidden{
+display:none;
+}
+
+.review-section{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.review-card{
+background:#fff;
+padding:40px;
+border-radius:20px;
+max-width:550px;
+width:90%;
+box-shadow:0 20px 60px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.review-option{
+display:block;
+padding:15px;
+margin:12px 0;
+border:2px solid #ddd;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.review-option:hover{
+border-color:#2563eb;
+background:#f3f7ff;
+}
+
+.review-option input{
+margin-right:10px;
+}
+
+.submit-btn{
+width:100%;
+padding:15px;
+border:none;
+background:#2563eb;
+color:#fff;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+margin-top:20px;
+}
+
+.submit-btn:hover{
+background:#1d4ed8;
+}
