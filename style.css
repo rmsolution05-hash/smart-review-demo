@@ -1,94 +1,89 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+const GOOGLE_REVIEW =
+"https://g.page/r/CdT-R2IpVtpnEBM/review";
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#2563eb,#0f172a);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#fff;
-    padding:20px;
-}
+const stars = document.querySelectorAll(".star");
 
-.background{
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at top left,#3b82f6,transparent 40%),
-    radial-gradient(circle at bottom right,#06b6d4,transparent 35%);
-    z-index:-1;
-}
+const hero = document.querySelector(".hero");
+const feedback = document.getElementById("feedbackSection");
+const review = document.getElementById("reviewSection");
+const thankyou = document.getElementById("thankyouSection");
 
-.card{
-    width:100%;
-    max-width:520px;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(20px);
-    border-radius:25px;
-    padding:40px;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-}
+let selectedReview = "";
 
-.logo{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:12px;
-    margin-bottom:30px;
-}
+stars.forEach((star) => {
 
-.logo-icon{
-    width:55px;
-    height:55px;
-    background:#fff;
-    color:#2563eb;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:24px;
-    font-weight:bold;
-}
+    star.addEventListener("click", () => {
 
-.hero h1{
-    font-size:38px;
-    margin:20px 0;
-}
+        const rating = Number(star.dataset.rate);
 
-.hero p{
-    opacity:.9;
-    line-height:1.7;
-}
+        if (rating === 5) {
 
-.stars{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin:35px 0;
-}
+            hero.classList.add("hidden");
+            review.classList.remove("hidden");
 
-.star{
-    width:60px;
-    height:60px;
-    border:none;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:30px;
-    background:#fff;
-    color:#f59e0b;
-    transition:.3s;
-}
+        } else {
 
-.star:hover{
-    transform:scale(1.15);
-}
+            hero.classList.add("hidden");
+            feedback.classList.remove("hidden");
 
-.hidden{
-    display:none;
-}
+        }
+
+    });
+
+});
+
+const options = document.querySelectorAll(
+'input[name="review"]'
+);
+
+options.forEach((option)=>{
+
+    option.addEventListener("change",()=>{
+
+        selectedReview = option.value;
+
+    });
+
+});
+
+document
+.getElementById("copyReviewBtn")
+.addEventListener("click",()=>{
+
+    if(selectedReview===""){
+
+        alert("Please select a review.");
+
+        return;
+
+    }
+
+    navigator.clipboard.writeText(selectedReview);
+
+    alert("Review Copied ✔\nNow Paste it on Google.");
+
+    review.classList.add("hidden");
+
+    thankyou.classList.remove("hidden");
+
+    setTimeout(()=>{
+
+        window.location.href=GOOGLE_REVIEW;
+
+    },1000);
+
+});
+
+document
+.getElementById("feedbackForm")
+.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert("Thank you for your feedback ❤️");
+
+    feedback.classList.add("hidden");
+
+    thankyou.classList.remove("hidden");
+
+});
