@@ -1,7 +1,8 @@
 /* ==========================================
    PART 3 : FEEDBACK SUBMIT + SUCCESS FLOW
 ========================================== */
-
+const feedbackForm =
+document.querySelector("#feedbackForm");
 
 // Google Review Link
 const googleReviewURL = "YOUR_GOOGLE_REVIEW_LINK_HERE";
