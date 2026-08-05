@@ -275,5 +275,425 @@ mailURL
 
 // window.location.href = mailURL;
 
+}
+/* ==========================================
+   PART 4 : AI REVIEW GENERATOR SYSTEM
+========================================== */
+
+
+/* ==========================================
+   AI REVIEW TEMPLATES
+========================================== */
+
+
+const reviewTemplates = [
+
+"Excellent service! The team was professional, responsive and delivered amazing results. Highly recommended!",
+
+
+"Really happy with the experience. Great quality, fast support and very smooth communication.",
+
+
+"One of the best services I have used. The team understands customer needs and provides excellent solutions.",
+
+
+"Amazing experience! Professional approach, quick response and outstanding support. Thank you!",
+
+
+"Very satisfied with the service. Quality work, friendly team and great customer experience.",
+
+
+"Highly recommended! They provide reliable service with great attention to detail."
+
+];
+
+
+
+
+
+/* ==========================================
+      GENERATE AI REVIEW
+========================================== */
+
+
+const generateBtn =
+document.querySelector("#generateReview");
+
+
+const reviewBox =
+document.querySelector("#aiReviewText");
+
+
+
+if(generateBtn){
+
+
+generateBtn.addEventListener(
+"click",
+()=>{
+
+
+generateAIReview();
+
+
+});
+
+
+}
+
+
+
+
+
+function generateAIReview(){
+
+
+
+let randomIndex =
+Math.floor(
+Math.random()*reviewTemplates.length
+);
+
+
+
+let selectedReview =
+reviewTemplates[randomIndex];
+
+
+
+if(reviewBox){
+
+
+reviewBox.innerHTML =
+selectedReview;
+
+
+}
+
+
+
+// Show Toast
+
+showToast(
+"✨ AI Review Generated Successfully"
+);
+
+
+
+}
+
+
+
+
+
+/* ==========================================
+      COPY REVIEW SYSTEM
+========================================== */
+
+
+const copyBtn =
+document.querySelector("#copyReview");
+
+
+
+if(copyBtn){
+
+
+copyBtn.addEventListener(
+"click",
+()=>{
+
+
+copyReviewText();
+
+
+});
+
+
+}
+
+
+
+
+
+function copyReviewText(){
+
+
+let text =
+reviewBox.innerText;
+
+
+
+navigator.clipboard.writeText(text)
+
+.then(()=>{
+
+
+copyBtn.innerHTML =
+"✅ Copied!";
+
+
+
+showToast(
+"📋 Review Copied"
+);
+
+
+
+setTimeout(()=>{
+
+
+copyBtn.innerHTML =
+"Copy Review";
+
+
+},2000);
+
+
+
+})
+
+.catch(()=>{
+
+
+showToast(
+"❌ Copy Failed"
+);
+
+
+});
+
+
+}
+
+
+
+
+
+/* ==========================================
+      PREMIUM TOAST SYSTEM
+========================================== */
+
+
+function showToast(message){
+
+
+let toast =
+document.querySelector("#toast");
+
+
+
+if(!toast){
+
+
+toast =
+document.createElement("div");
+
+
+toast.id="toast";
+
+
+document.body.appendChild(toast);
+
+
+}
+
+
+
+toast.innerHTML =
+message;
+
+
+
+toast.classList.add(
+"show"
+);
+
+
+
+setTimeout(()=>{
+
+
+toast.classList.remove(
+"show"
+);
+
+
+},3000);
+
+
+
+}
+
+
+
+
+
+
+/* ==========================================
+      FEEDBACK ANALYTICS COUNTER
+========================================== */
+
+
+
+function updateFeedbackCounter(){
+
+
+
+let feedbacks =
+JSON.parse(
+localStorage.getItem(
+"customerFeedbacks"
+)
+)
+||
+[];
+
+
+
+
+feedbacks.push({
+
+date:
+new Date().toLocaleDateString()
+
+});
+
+
+
+localStorage.setItem(
+
+"customerFeedbacks",
+
+JSON.stringify(feedbacks)
+
+);
+
+
+
+let counter =
+document.querySelector(
+"#feedbackCount"
+);
+
+
+
+if(counter){
+
+
+counter.innerHTML =
+feedbacks.length;
+
+
+}
+
+
+
+}
+
+
+
+
+/* ==========================================
+      SPAM PROTECTION
+========================================== */
+
+
+function spamProtection(){
+
+
+let lastSubmit =
+localStorage.getItem(
+"lastFeedbackTime"
+);
+
+
+
+let currentTime =
+Date.now();
+
+
+
+
+if(lastSubmit){
+
+
+let difference =
+currentTime-lastSubmit;
+
+
+
+// 30 Second Limit
+
+if(difference < 30000){
+
+
+showToast(
+"⚠️ Please wait before submitting again"
+);
+
+
+return false;
+
+
+}
+
+
+
+}
+
+
+
+localStorage.setItem(
+
+"lastFeedbackTime",
+
+currentTime
+
+);
+
+
+
+return true;
+
+
+}
+
+
+
+
+
+/* ==========================================
+      ENABLE SPAM CHECK ON FORM
+========================================== */
+
+
+if(feedbackForm){
+
+
+feedbackForm.addEventListener(
+"submit",
+(e)=>{
+
+
+if(!spamProtection()){
+
+
+e.preventDefault();
+
+
+return;
+
+
+}
+
+
+
+updateFeedbackCounter();
+
+
+
+});
+
 
 }
